@@ -89,18 +89,60 @@ header nav ul li a:hover{
 /* START */
 
 #start{
-    background-color: #D92525;
+    background-color: black;
 }
 
-#start div{
-    width: 30vw;
-    margin: 2vw auto;
-    padding: 4vw;
+#start .container_start{
+    display: inline;
+}
 
-    background-color: rgba(255,255,255,0.5);
+#start .container_start .big_bird{
+    background-image: url(pics/bigbirb.svg);
+    width: 30vw;
+    height: 23.68vw;
+    background-size: cover;
+    display: inline-block;
+
+    margin: 1.5vw;
+}
+
+#start .container_start .small_bird{
+    background-image: url(pics/lilbirb.svg);
+    width: 15vw;
+    height: 15.56vw;
+    background-size: cover;
+    display: inline-block;
+    position: absolute;
+
+    margin: 10vw 11vw 0;
+
+}
+
+#start .start_txt{
+    width: 33vw;
+    margin: 0 auto;
+    padding: 2vw 4vw;
+
+    background-color: white;
+
+    display: inline-block;
+
+}
+
+#start h1{
+    color: #D92534;
+    margin-top: 6vw;
+}
+
+#start p{
+    margin-bottom: 4vw;
 }
 
 /* MENU */
+
+#menu{
+    margin-top: 3vw;
+}
 
 #menu .menu_buttons{
 
@@ -133,7 +175,7 @@ header nav ul li a:hover{
 }
 
 #menu ul li:hover{
-    border: 0;
+    border: solid #D92534 0.1vw;
     background-color: #D92534;
     color: white;
 }
