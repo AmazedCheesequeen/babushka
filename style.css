@@ -16,20 +16,20 @@ html {
 @font-face {
     font-family: 'blockheadunplugged';
     src: url('fonts/blockhead_unplugged_regular-webfont.woff2') format('woff2'),
-         url('fonts/blockhead_unplugged_regular-webfont.woff') format('woff');
+        url('fonts/blockhead_unplugged_regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
 
-h1{
+h1 {
     font-family: 'blockheadunplugged';
     font-size: 3vw;
     text-align: center;
     margin: 0.1vw 0;
 }
 
-p{
+p {
     font-family: 'Raleway', sans-serif;
     font-size: 1.2vw;
     line-height: 2vw;
@@ -37,7 +37,7 @@ p{
 
 
 
-section{
+section {
     width: 100vw;
     height: 100%;
 }
@@ -50,7 +50,7 @@ header {
 }
 
 
-header nav{
+header nav {
     text-align: center;
     margin: 0;
     padding: 0;
@@ -78,25 +78,27 @@ header nav ul li a {
     font-size: 1.2vw;
     padding: 0 2vw;
 
+    cursor: pointer;
+
 }
 
 
-header nav ul li a:hover{
+header nav ul li a:hover {
     color: #D92534;
 }
 
 
 /* START */
 
-#start{
+#start {
     background-color: black;
 }
 
-#start .container_start{
+#start .container_start {
     display: inline;
 }
 
-#start .container_start .big_bird{
+#start .container_start .big_bird {
     background-image: url(pics/bigbirb.svg);
     width: 30vw;
     height: 23.68vw;
@@ -106,7 +108,7 @@ header nav ul li a:hover{
     margin: 1.5vw;
 }
 
-#start .container_start .small_bird{
+#start .container_start .small_bird {
     background-image: url(pics/lilbirb.svg);
     width: 15vw;
     height: 15.56vw;
@@ -118,7 +120,7 @@ header nav ul li a:hover{
 
 }
 
-#start .start_txt{
+#start .start_txt {
     width: 33vw;
     margin: 0 auto;
     padding: 2vw 4vw;
@@ -129,22 +131,22 @@ header nav ul li a:hover{
 
 }
 
-#start h1{
+#start h1 {
     color: #D92534;
     margin-top: 6vw;
 }
 
-#start p{
+#start p {
     margin-bottom: 4vw;
 }
 
 /* MENU */
 
-#menu{
+#menu {
     margin-top: 3vw;
 }
 
-#menu .menu_buttons{
+#menu .menu_buttons {
 
     text-align: center;
     margin: 0;
@@ -154,10 +156,11 @@ header nav ul li a:hover{
 
 #menu ul {
     margin: 0;
-    padding: 0;
     list-style-type: none;
     padding: 0;
     display: inline;
+
+
 }
 
 #menu ul li {
@@ -171,15 +174,38 @@ header nav ul li a:hover{
 
     border: solid black 0.1vw;
 
+    cursor: pointer;
+
 
 }
 
-#menu ul li:hover{
+#menu ul li:hover {
     border: solid #D92534 0.1vw;
     background-color: #D92534;
     color: white;
 }
 
+
+.active{
+    border: solid #D92534 0.1vw;
+    background-color: #D92534;
+    color: white;
+}
+
+.data_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+}
+
+.whole_menu{
+    margin: 1vw;
+
+}
+
+.whole_menu .dish_img{
+    width: 100%;
+}
 
 
 
