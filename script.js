@@ -10,6 +10,13 @@ let dishCatagory = {
     "drikkevarer": []
 };
 
+let allDishes = document.querySelector("#all");
+let starters = document.querySelector("#starters");
+let mainDishes = document.querySelector("#maincourse");
+let desserts = document.querySelector("#desserts");
+let sideDish = document.querySelector("#sideorders");
+let drinks = document.querySelector("#drink");
+
 let activeButton = document.querySelector("#all");
 
 
@@ -28,6 +35,14 @@ document.addEventListener("DOMContentLoaded", getJson);
 
 //Make function run parallel with rest of website
 async function getJson() {
+
+    //Add eventListeners to filter buttons
+    allDishes.addEventListener("click", filterDish);
+    starters.addEventListener("click", filterDish);
+    mainDishes.addEventListener("click", filterDish);
+    desserts.addEventListener("click", filterDish);
+    sideDish.addEventListener("click", filterDish);
+    drinks.addEventListener("click", filterDish);
 
     setActive(activeButton);
 
@@ -48,36 +63,73 @@ async function getJson() {
         dishCatagory[dish.gsx$kategori.$t].push(dish);
     });
 
-    //Sort lists in right order
+    //Build lists in right order by calling function menuTypeBuilder
 
     for (let dishType in dishCatagory) {
-        //Make loop so you can clone template for each person and their data
 
-        dishCatagory[dishType].forEach(dish => {
-
-            //Make a clone of template
-            let clone = template.cloneNode(true).content;
-
-            //Insert dish name
-
-            clone.querySelector(".dish_name").textContent = dish.gsx$navn.$t;
-
-
-            //Insert picture source and alt in .dish_img of clone template
-            clone.querySelector(".dish_img").src = "../pics/imgs/small/" + dish.gsx$billede.$t + "-sm.jpg";
-
-            clone.querySelector(".dish_img").alt = dish.gsx$navn.$t;
-
-            //Insert short description in .short_txt of clone template
-            clone.querySelector(".short_txt").textContent = dish.gsx$kort.$t;
-
-            //Insert the now cloned template to section data_container´s children
-            document.querySelector(".data_container").appendChild(clone);
-
-
-        });
+        menuTypeBuilder(dishType);
 
     }
+
+
+}
+
+function menuTypeBuilder(dishType) {
+
+    //Make loop so you can clone template for each person and their data
+    dishCatagory[dishType].forEach(dish => {
+
+        //Make a clone of template
+        let clone = template.cloneNode(true).content;
+
+        //Insert dish name
+
+        clone.querySelector(".dish_name").textContent = dish.gsx$navn.$t;
+
+
+        //Insert picture source and alt in .dish_img of clone template
+        clone.querySelector(".dish_img").src = "../pics/imgs/small/" + dish.gsx$billede.$t + "-sm.jpg";
+
+        clone.querySelector(".dish_img").alt = dish.gsx$navn.$t;
+
+        //Insert short description in .short_txt of clone template
+        clone.querySelector(".short_txt").textContent = dish.gsx$kort.$t;
+
+        //Insert price in .price of clone template
+        clone.querySelector(".price").textContent = dish.gsx$pris.$t + " kr";
+
+
+        //Insert the now cloned template to section data_container´s children
+        document.querySelector(".data_container").appendChild(clone);
+
+
+    });
+
+}
+
+function filterDish() {
+
+    //
+
+    document.querySelector(".data_container").innerHTML = "";
+
+    let data = this.dataset.type;
+
+    if (data == "alle") {
+        for (let dishType in dishCatagory) {
+
+            menuTypeBuilder(dishType);
+
+        }
+    }
+
+    else {
+        menuTypeBuilder(data);
+    }
+
+
+
+
 
 
 }
