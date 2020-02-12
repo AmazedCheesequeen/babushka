@@ -29,6 +29,12 @@ h1 {
     margin: 0.1vw 0;
 }
 
+h2 {
+    font-family: 'blockheadunplugged';
+    font-size: 2vw;
+    margin: 0.1vw 0;
+}
+
 p {
     font-family: 'Raleway', sans-serif;
     font-size: 1.2vw;
@@ -194,17 +200,36 @@ header nav ul li a:hover {
 
 .data_container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+
+    margin: auto;
+    padding: 0 10vw;
 
 }
 
 .whole_menu{
     margin: 1vw;
+    width: 18vw;
+    height: 35vw;
+
+    box-shadow: 0.4vw 0.4vw 2vw #D9D4D0;
 
 }
 
 .whole_menu .dish_img{
-    width: 100%;
+    width: 18vw;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.price {
+    font-family: 'blockheadunplugged';
+    font-size: 2vw;
+    text-align: end;
+    margin: 0;
+    padding: 0;
+
+    color: #D92534;
 }
 
 
