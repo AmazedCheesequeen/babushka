@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro Babushka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="single">
+
+        <div class="single_box">
+
+            <img src="" class="dish_img" alt="">
+            <p class="long_txt"></p>
+            <div class="exit"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+    <script>
+        const queryString = window.location.search;
+
+        const urlParams = new URLSearchParams(queryString);
+
+        let imageName = urlParams.get("imagename");
+
+        let longText = urlParams.get("longtxt");
+
+        document.querySelector(".long_txt").innerHTML = longText;
+
+        document.querySelector(".dish_img").src = "../pics/imgs/large/" + imageName + ".jpg";
+
+        document.querySelector(".dish_img").alt = imageName;
+
+        document.querySelector(".exit").addEventListener("click", goBack);
+
+        function goBack() {
+            document.querySelector(".exit").removeEventListener("click", goBack);
+            history.back();
+        }
+    </script>
+</body></html>

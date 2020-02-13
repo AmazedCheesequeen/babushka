@@ -99,12 +99,16 @@ function menuTypeBuilder(dishType) {
         //Insert price in .price of clone template
         clone.querySelector(".price").textContent = dish.gsx$pris.$t + " kr";
 
+        let event = clone.querySelector(".dish_img");
 
+        event.addEventListener("click", ()=>{
 
+            location.href= 'single-view.html?imagename='+ dish.gsx$billede.$t + "&longtxt="+ dish.gsx$lang.$t;
+        })
 
-        let event = clone.querySelector(".dish_img"); event.addEventListener("click", buildPopUp, false);
+        //let event = clone.querySelector(".dish_img"); event.addEventListener("click", buildPopUp, false);
 
-        event.dish = dish;
+        //event.dish = dish;
 
        //Insert the now cloned template to section data_container´s children
         document.querySelector(".data_container").appendChild(clone);
@@ -135,7 +139,7 @@ function filterDish() {
 
 }
 
-function buildPopUp(event) {
+/*function buildPopUp(event) {
     console.log(this);
     console.log(this.querySelector(".dish_img"));
     let single=  document.querySelector(".single_box");
@@ -165,4 +169,6 @@ function popGone() {
     document.querySelector(".single").style.display = "none";
     document.querySelector(".exit").removeEventListener("click", popGone)
 
-}
+} */
+
+
