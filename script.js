@@ -1,6 +1,6 @@
 //Variables
 
-let template = document.querySelector("template");
+let templateLoop = document.querySelector(".loop");
 
 let dishCatagory = {
     "forretter": [],
@@ -80,7 +80,7 @@ function menuTypeBuilder(dishType) {
     dishCatagory[dishType].forEach(dish => {
 
         //Make a clone of template
-        let clone = template.cloneNode(true).content;
+        let clone = templateLoop.cloneNode(true).content;
 
         //Insert dish name
 
@@ -95,41 +95,74 @@ function menuTypeBuilder(dishType) {
         //Insert short description in .short_txt of clone template
         clone.querySelector(".short_txt").textContent = dish.gsx$kort.$t;
 
+
         //Insert price in .price of clone template
         clone.querySelector(".price").textContent = dish.gsx$pris.$t + " kr";
 
 
-        //Insert the now cloned template to section data_container´s children
+
+
+        let event = clone.querySelector(".dish_img"); event.addEventListener("click", buildPopUp, false);
+
+        event.dish = dish;
+
+       //Insert the now cloned template to section data_container´s children
         document.querySelector(".data_container").appendChild(clone);
-
-
     });
 
 }
 
 function filterDish() {
 
-    //
-
     document.querySelector(".data_container").innerHTML = "";
 
     let data = this.dataset.type;
 
-    if (data == "alle") {
+    if (data == "menu") {
         for (let dishType in dishCatagory) {
 
             menuTypeBuilder(dishType);
 
         }
-    }
-
-    else {
+    } else {
         menuTypeBuilder(data);
     }
 
+    document.querySelector(".type_menu").innerHTML = data;
+
+    setActive(this);
 
 
+}
 
+function buildPopUp(event) {
+    console.log(this);
+    console.log(this.querySelector(".dish_img"));
+    let single=  document.querySelector(".single_box");
+    let jsonPop = event.currentTarget.dish;
 
+    //Insert picture source and alt in .dish_img of clone template
+
+    single.querySelector(".dish_img").src = "../pics/imgs/large/" + jsonPop.gsx$billede.$t + ".jpg";
+
+    single.querySelector(".dish_img").alt = jsonPop.gsx$navn.$t;
+
+    //Insert short description in .long_txt of clone template
+    single.querySelector(".long_txt").textContent = jsonPop.gsx$lang.$t;
+
+    //Display popUp
+
+    document.querySelector(".single").style.display = "block";
+
+    //Add eventlistener
+
+    document.querySelector(".exit").addEventListener("click", popGone)
+
+}
+
+function popGone() {
+
+    document.querySelector(".single").style.display = "none";
+    document.querySelector(".exit").removeEventListener("click", popGone)
 
 }
